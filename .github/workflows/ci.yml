@@ -49,8 +49,11 @@ jobs:
           token: ${{ secrets.NPM_TOKEN }}
 
   release:
+    if: startsWith(github.ref, 'refs/tags/')
     name: Release
     needs: npm
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -58,22 +61,15 @@ jobs:
         id: tag
         run: |
           TAG_TITLE=${GITHUB_REF#refs/*/}
-          echo ::set-output name=title::$TAG_TITLE
-          git -c protocol.version=2 fetch --prune --progress \
-            --no-recurse-submodules origin \
-            +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
-          TAG_BODY="$(git tag -l --format='%(contents)' $TAG_TITLE)"
-          TAG_BODY="${TAG_BODY//'%'/'%25'}"
-          TAG_BODY="${TAG_BODY//$'\n'/'%0A'}"
-          TAG_BODY="${TAG_BODY//$'\r'/'%0D'}"
-          echo ::set-output name=body::$TAG_BODY
-      - name: Create Release
+          echo "title=$TAG_TITLE" >> $GITHUB_OUTPUT
+      - name: Create release
         uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.tag.outputs.title }}
-          name: ${{ steps.tag.outputs.title }}
-          body: ${{ steps.tag.outputs.body }}
-          draft: false
-          prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: ${{ steps.tag.outputs.title }}
+          tag_name: ${{ steps.tag.outputs.title }}
+          body: |
+            See [CHANGELOG](https://github.com/mondeja/leptos-fluent/blob/master/CHANGELOG.md).
+          draft: false
+          prerelease: false

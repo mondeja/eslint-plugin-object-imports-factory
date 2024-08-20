@@ -1,9 +1,9 @@
 {
-    "name": "esm-example",
-    "devDependencies": {
-        "eslint": "^9.0.0",
-        "eslint-plugin-object-imports-factory": "file:../.."
-    },
-    "private": true,
-    "type": "module"
+  "name": "esm-example",
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-plugin-object-imports-factory": "file:../.."
+  },
+  "private": true,
+  "type": "module"
 }

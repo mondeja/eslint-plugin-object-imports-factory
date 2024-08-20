@@ -1,0 +1,19 @@
+{
+  "space": 2,
+  "ignores": ["examples/cjs"],
+  "extends": ["plugin:eslint-plugin/recommended"],
+  "overrides": [
+    {
+      "files": ["examples/esm/**/*.js"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
+    },
+    {
+      "files": ["test.js", "index.js"],
+      "rules": {
+        "unicorn/no-await-expression-member": "off"
+      }
+    }
+  ]
+}

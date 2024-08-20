@@ -1,14 +1,14 @@
 const plugin = {
-    meta: {
-        name: "eslint-plugin-object-imports-factory",
-        version: "0.0.1"
-    },
-    configs: {},
-    rules: {
-        "require": require("./lib/require.js"),
-        "import": require("./lib/import.js")
-    },
-    processors: {}
+  meta: {
+    name: 'eslint-plugin-object-imports-factory',
+    version: '0.0.1',
+  },
+  configs: {},
+  rules: {
+    require: (await import('./lib/require.js')).default,
+    import: (await import('./lib/import.js')).default,
+  },
+  processors: {},
 };
 
-module.exports = plugin;
+export default plugin;

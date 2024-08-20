@@ -1,3 +1,3 @@
-console.log("baz.js");
+console.log('baz.js');
 
-export default "baz";
+export default 'baz';
