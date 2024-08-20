@@ -1,3 +1,3 @@
-console.log("foo.js");
+console.log('foo.js');
 
-export default "foo";
+export default 'foo';

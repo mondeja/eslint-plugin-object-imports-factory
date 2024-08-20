@@ -1,3 +1,3 @@
-console.log("bar.js");
+console.log('bar.js');
 
-export default "bar";
+export default 'bar';
