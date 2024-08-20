@@ -1,6 +1,7 @@
 {
   "space": 2,
   "ignores": ["examples/cjs"],
+  "extends": ["plugin:eslint-plugin/recommended"],
   "overrides": [
     {
       "files": ["examples/esm/**/*.js"],

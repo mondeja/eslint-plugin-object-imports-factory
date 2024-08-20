@@ -29,6 +29,7 @@
   ],
   "devDependencies": {
     "ava": "^6",
+    "eslint-plugin-eslint-plugin": "^6",
     "xo": "^0.59"
   },
   "repository": {
