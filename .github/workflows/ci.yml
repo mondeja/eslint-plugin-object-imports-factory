@@ -69,7 +69,5 @@ jobs:
         with:
           name: ${{ steps.tag.outputs.title }}
           tag_name: ${{ steps.tag.outputs.title }}
-          body: |
-            See [CHANGELOG](https://github.com/mondeja/leptos-fluent/blob/master/CHANGELOG.md).
           draft: false
           prerelease: false
